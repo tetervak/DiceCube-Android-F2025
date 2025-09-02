@@ -1,5 +1,26 @@
 package ca.tetervak.dicecube
 
+import ca.tetervak.dicecube.model.DiceCube
+import kotlin.random.Random
+
 fun main() {
-    println("Hello Android!")
+    val cube1 = DiceCube()
+    cube1.roll()
+
+    println("value1 = ${cube1.value}")
+    println("cube1 = $cube1")
+
+    repeat(5) {
+        cube1.roll()
+        println("value1 = ${cube1.value}")
+    }
+
+    // providing the seed value makes the roll value sequence always the same
+    println("Using the seed value")
+    val random2 = Random(12)
+    val cube2 = DiceCube(random2)
+    repeat(5) {
+        cube2.roll()
+        println("value = ${cube2.value}")
+    }
 }
