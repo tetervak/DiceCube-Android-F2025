@@ -45,7 +45,3 @@ fun GreetingPreview() {
         Greeting("Android")
     }
 }
-
-fun main() {
-    println("Hello Android!")
-}
