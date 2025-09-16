@@ -9,7 +9,8 @@ import ca.tetervak.dicecube.model.DiceCube
 class DiceCubeViewModel: ViewModel() {
 
     private val diceCube: DiceCube = DiceCube()
-    var diceValue: Int by mutableIntStateOf( diceCube. value)
+
+    var diceValue: Int by mutableIntStateOf( diceCube.value)
     private set
 
     fun onRollDice(){
