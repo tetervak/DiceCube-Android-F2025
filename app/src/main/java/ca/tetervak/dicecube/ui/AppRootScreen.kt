@@ -23,6 +23,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import ca.tetervak.dicecube.R
 import ca.tetervak.dicecube.model.DiceCube
 import ca.tetervak.dicecube.ui.theme.DiceCubeTheme
@@ -37,12 +38,9 @@ fun AppRootScreen() {
                 .padding(innerPadding)
                 .fillMaxSize()
         ) {
-            val dice: DiceCube = remember {
-                DiceCube()
-            }
-            var diceValue: Int by rememberSaveable {
-                mutableIntStateOf(dice.value)
-            }
+            val viewModel: DiceCubeViewModel = viewModel()
+            val diceValue: Int = viewModel.diceValue
+
             Text(
                 text = stringResource(R.string.hello),
                 fontSize = 24.sp,
@@ -54,8 +52,7 @@ fun AppRootScreen() {
             Text(text = diceValue.toString(), fontSize = 40.sp)
             Button(
                 onClick = {
-                    dice.roll()
-                   diceValue = dice.value
+                    viewModel.onRollDice()
                 },
                 modifier = Modifier.padding(top=24.dp)
             ) {
