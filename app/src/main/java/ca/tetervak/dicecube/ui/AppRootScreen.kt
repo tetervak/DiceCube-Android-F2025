@@ -11,6 +11,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
@@ -39,7 +40,7 @@ fun AppRootScreen() {
                 .fillMaxSize()
         ) {
             val viewModel: DiceCubeViewModel = viewModel()
-            val diceValue: Int = viewModel.diceValue
+            val diceValue: Int by viewModel.diceState.collectAsState()
 
             Text(
                 text = stringResource(R.string.hello),
